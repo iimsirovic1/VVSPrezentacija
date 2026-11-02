@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A6DA1DE2-CABE-AE4D-843E-82E755D72D26}|LosKod\\LosKod.csproj|c:\\users\\home\\desktop\\vvs\\vvsprezentacija\\loskod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6DA1DE2-CABE-AE4D-843E-82E755D72D26}|LosKod\\LosKod.csproj|solutionrelative:loskod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{781BFBB2-D7D6-54DF-A090-4198A2CC3239}|IspravljenKod\\IspravljenKod.csproj|c:\\users\\home\\desktop\\vvs\\vvsprezentacija\\ispravljenkod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{781BFBB2-D7D6-54DF-A090-4198A2CC3239}|IspravljenKod\\IspravljenKod.csproj|solutionrelative:ispravljenkod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\LosKod\\Program.cs",
+              "RelativeDocumentMoniker": "LosKod\\Program.cs",
+              "ToolTip": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\LosKod\\Program.cs",
+              "RelativeToolTip": "LosKod\\Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T16:31:49.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\Program.cs",
+              "RelativeDocumentMoniker": "IspravljenKod\\Program.cs",
+              "ToolTip": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\Program.cs",
+              "RelativeToolTip": "IspravljenKod\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T16:31:33.442Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

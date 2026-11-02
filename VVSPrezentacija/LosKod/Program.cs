@@ -20,6 +20,10 @@ builder.Services.AddHttpClient("PaymentApi", client =>
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 });
 
+// Primjer 2b — isti propust, ali vrijednost ne sadrži riječ "Example"
+var apiKey2 = "sk_live_51H8xQz7Lm2Xv9Rt4Kp8";
+
+
 // Primjer 3 — LOŠE: ključ za potpisivanje JWT-a je upisan direktno u kod (CWE-321)
 var signingKey = new SymmetricSecurityKey(
     Encoding.UTF8.GetBytes("moj-super-tajni-kljuc-za-jwt-1234567890"));
@@ -28,6 +32,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         IssuerSigningKey = signingKey
     });
+
 
 var app = builder.Build();
 app.MapGet("/", () => "LosKod");
