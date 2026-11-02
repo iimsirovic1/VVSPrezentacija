@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IspravljenKod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+293b8ff34801d0123bf8847b9e686e77900cf03e")]
 [assembly: System.Reflection.AssemblyProductAttribute("IspravljenKod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IspravljenKod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

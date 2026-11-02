@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HOME\\source\\repos\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj": {}
+    "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HOME\\source\\repos\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj": {
+    "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HOME\\source\\repos\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj",
+        "projectUniqueName": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj",
         "projectName": "IspravljenKod",
-        "projectPath": "C:\\Users\\HOME\\source\\repos\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj",
+        "projectPath": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\IspravljenKod.csproj",
         "packagesPath": "C:\\Users\\HOME\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HOME\\source\\repos\\VVSPrezentacija\\IspravljenKod\\obj\\",
+        "outputPath": "C:\\Users\\HOME\\Desktop\\VVS\\VVSPrezentacija\\IspravljenKod\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
