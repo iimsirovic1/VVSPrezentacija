@@ -11,11 +11,6 @@ var connectionString =
     "Server=prod-db;Database=Shop;User Id=sa;Password=SuperTajna123;";
 using var conn = new SqlConnection(connectionString);
 
-// Primjer 1b — isti propust, ali tajna se dodjeljuje propertyju ConnectionString
-var connectionString2 =
-    "Server=prod-db;Database=Shop;User Id=sa;Password=SuperTajna123;";
-using var conn2 = new SqlConnection();
-conn2.ConnectionString = connectionString2;
 
 // Primjer 2 — LOŠE: API ključ je upisan direktno u kod (CWE-798)
 var apiKey = "sk_live_51H8xExampleKey123";
