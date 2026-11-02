@@ -1,0 +1,39 @@
+name: "SonarQube Cloud"
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # cijela historija, Sonaru treba za analizu promjena
+
+      - uses: actions/setup-java@v4   # Sonar skener za kraj analize treba Javu
+        with:
+          distribution: zulu
+          java-version: 17
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Instaliraj SonarScanner za .NET
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Build i analiza
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # token dolazi iz GitHub Secrets, nije u kodu
+        run: |
+          dotnet sonarscanner begin /k:"iimsirovic1_VVSPrezentacija" /o:"iimsirovic1" /d:sonar.token="$SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build VVSPrezentacija/LosKod/LosKod.csproj
+          dotnet build VVSPrezentacija/IspravljenKod/IspravljenKod.csproj
+          dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
