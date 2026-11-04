@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="IspravljenKod/IspravljenKod.csproj" />
   <Project Path="LosKod/LosKod.csproj" />
+  <Project Path="SQLInjectionIspravljenKod/SQLInjectionIspravljenKod.csproj" Id="a82953d6-3fca-43f4-ba35-7805a73d582e" />
+  <Project Path="SQLInjectionLosKod/SQLInjectionLosKod.csproj" Id="f281c202-4c14-47de-b33f-58b36cdd4f5c" />
 </Solution>

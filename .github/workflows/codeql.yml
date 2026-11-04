@@ -1,22 +1,25 @@
-name: "CodeQL - hardkodirane tajne"
+
+name: "CodeQL - sigurnosna analiza"
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:      # omogućava ručno pokretanje iz taba Actions
+    branches: ["main", "sql-injection"]
+  workflow_dispatch:
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
+
     permissions:
-      security-events: write   # dozvola za upis rezultata u Security tab
+      security-events: write
       contents: read
       actions: read
+
     steps:
       - uses: actions/checkout@v4
 
-      # instalira .NET 10 SDK, jer su projekti napravljeni za net10.0
-      - uses: actions/setup-dotnet@v4
+      - name: Instalacija .NET 10 SDK
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
 
@@ -24,15 +27,16 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: csharp
-          build-mode: manual          # CodeQL prati pravi build umjesto da pogađa pakete
+          build-mode: manual
           queries: security-extended
-          # ručno dodaje pravila iz foldera CWE-798, koja više nisu ni u jednom skupu
           packs: "codeql/csharp-queries:Security Features/CWE-798"
 
       - name: Build
         run: |
           dotnet build VVSPrezentacija/LosKod/LosKod.csproj
           dotnet build VVSPrezentacija/IspravljenKod/IspravljenKod.csproj
+          dotnet build VVSPrezentacija/SQLInjectionLosKod/SQLInjectionLosKod.csproj
+          dotnet build VVSPrezentacija/SQLInjectionIspravljenKod/SQLInjectionIspravljenKod.csproj
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
