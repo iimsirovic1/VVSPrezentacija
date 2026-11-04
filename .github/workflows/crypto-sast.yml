@@ -1,0 +1,92 @@
+
+name: Crypto SAST - MD5 SHA1 DES
+
+on:
+  push:
+    branches:
+      - weak-cryptography
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crypto-sast:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preuzmi kod
+        uses: actions/checkout@v4
+
+      - name: Podesi Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instaliraj Semgrep
+        run: python -m pip install semgrep
+
+      - name: Analiziraj nesigurne algoritme
+        run: |
+          cat > crypto-rules.yml <<'EOF'
+          rules:
+            - id: weak-md5
+              languages: [csharp]
+              severity: WARNING
+              message: "MD5 nije siguran za cuvanje lozinki."
+              pattern-either:
+                - pattern: MD5.HashData(...)
+                - pattern: MD5.Create()
+
+            - id: weak-sha1
+              languages: [csharp]
+              severity: WARNING
+              message: "SHA-1 ima poznate kriptografske slabosti."
+              pattern-either:
+                - pattern: SHA1.HashData(...)
+                - pattern: SHA1.Create()
+
+            - id: weak-des
+              languages: [csharp]
+              severity: WARNING
+              message: "DES koristi zastarjeli kljuc od 56 bita."
+              pattern: DES.Create()
+          EOF
+
+          semgrep scan --config crypto-rules.yml --json --output crypto-results.json VVSPrezentacija/LosKod
+
+      - name: Prikazi rezultate
+        run: |
+          python - <<'PY'
+          import json
+          import os
+
+          with open("crypto-results.json", encoding="utf-8") as f:
+              data = json.load(f)
+
+          results = data.get("results", [])
+          lines = [
+              "## Crypto SAST rezultati",
+              f"Ukupno nalaza: **{len(results)}**",
+              ""
+          ]
+
+          for result in results:
+              rule = result["check_id"].split(".")[-1]
+              path = result["path"]
+              line = result["start"]["line"]
+              finding = f"{rule}: {path}, linija {line}"
+              print(finding)
+              lines.append(f"- {finding}")
+
+          print(f"Ukupno nalaza: {len(results)}")
+
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write("\n".join(lines))
+          PY
+
+      - name: Sacuvaj izvjestaj
+        uses: actions/upload-artifact@v4
+        with:
+          name: crypto-sast-results
+          path: crypto-results.json
