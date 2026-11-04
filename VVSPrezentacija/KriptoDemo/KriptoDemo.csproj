@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\IspravljenKod\AESFixed.cs" Link="AESFixed.cs" />
+    <Compile Include="..\IspravljenKod\MD5Fixed.cs" Link="MD5Fixed.cs" />
+    <Compile Include="..\IspravljenKod\SHA256Fixed.cs" Link="SHA256Fixed.cs" />
+    <Compile Include="..\LosKod\DESExample.cs" Link="DESExample.cs" />
+    <Compile Include="..\LosKod\MD5Example.cs" Link="MD5Example.cs" />
+    <Compile Include="..\LosKod\SHA1Example.cs" Link="SHA1Example.cs" />
+  </ItemGroup>
+
+</Project>
