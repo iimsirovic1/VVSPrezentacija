@@ -1,0 +1,40 @@
+
+name: "SonarQube - IspravljenKod"
+
+on:
+  push:
+    branches: [ "weak-cryptography" ]
+  workflow_dispatch:
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Instaliraj SonarScanner
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Analiziraj samo ispravljeni kod
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet sonarscanner begin /k:"iimsirovic1_VVSPrezentacija" /o:"iimsirovic1" /d:sonar.token="$SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**/LosKod/**"
+          dotnet build VVSPrezentacija/IspravljenKod/IspravljenKod.csproj
+          dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
