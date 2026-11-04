@@ -17,15 +17,26 @@ import csharp
 from MethodCall call, string algorithm
 where
   (
-    call.getTarget().hasQualifiedName("System.Security.Cryptography.MD5.HashData") or
-    call.getTarget().hasQualifiedName("System.Security.Cryptography.MD5.Create")
-  ) and algorithm = "MD5"
+    call.getTarget().getDeclaringType().hasQualifiedName("System.Security.Cryptography.MD5") and
+    (
+      call.getTarget().hasName("HashData") or
+      call.getTarget().hasName("Create")
+    ) and
+    algorithm = "MD5"
+  )
   or
   (
-    call.getTarget().hasQualifiedName("System.Security.Cryptography.SHA1.HashData") or
-    call.getTarget().hasQualifiedName("System.Security.Cryptography.SHA1.Create")
-  ) and algorithm = "SHA-1"
+    call.getTarget().getDeclaringType().hasQualifiedName("System.Security.Cryptography.SHA1") and
+    (
+      call.getTarget().hasName("HashData") or
+      call.getTarget().hasName("Create")
+    ) and
+    algorithm = "SHA-1"
+  )
   or
-  call.getTarget().hasQualifiedName("System.Security.Cryptography.DES.Create")
-  and algorithm = "DES"
+  (
+    call.getTarget().getDeclaringType().hasQualifiedName("System.Security.Cryptography.DES") and
+    call.getTarget().hasName("Create") and
+    algorithm = "DES"
+  )
 select call, "Detected use of insecure cryptographic algorithm: " + algorithm + "."
