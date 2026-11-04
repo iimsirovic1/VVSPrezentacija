@@ -53,7 +53,7 @@ jobs:
               pattern: DES.Create()
           EOF
 
-          semgrep scan --config crypto-rules.yml --json --output crypto-results.json VVSPrezentacija/LosKod
+       semgrep scan --config crypto-rules.yml --json --output crypto-results.json VVSPrezentacija/LosKod VVSPrezentacija/IspravljenKod
 
       - name: Prikazi rezultate
         run: |
