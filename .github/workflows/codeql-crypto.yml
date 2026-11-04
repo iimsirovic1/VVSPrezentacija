@@ -1,0 +1,42 @@
+
+name: "CodeQL - Kriptografske ranjivosti"
+
+on:
+  push:
+    branches: [ "weak-cryptography" ]
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+
+    steps:
+      - name: Preuzmi kod
+        uses: actions/checkout@v4
+
+      - name: Podesi .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Pokreni CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: csharp
+          build-mode: manual
+          queries: security-extended
+
+      - name: Build projekata
+        run: |
+          dotnet build VVSPrezentacija/LosKod/LosKod.csproj
+          dotnet build VVSPrezentacija/IspravljenKod/IspravljenKod.csproj
+
+      - name: Analiziraj kod
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:csharp-crypto"
